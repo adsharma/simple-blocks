@@ -9,7 +9,7 @@ T = TypeVar("T", bound=Callable[..., NDArray])
 FloatArray = NDArray[np.float64]  # Type alias for float arrays
 
 
-def block(block_m: int, block_n: int) -> Callable[[T], T]:
+def block(block_m: int = 128, block_n: int = 128) -> Callable[[T], T]:
     """
     Decorator for implementing block-based tiling for matrix multiplication.
 
@@ -54,8 +54,8 @@ def block(block_m: int, block_n: int) -> Callable[[T], T]:
                         A_block: NDArray = A[i:i_end, k_start:k_end]
                         B_block: NDArray = B[k_start:k_end, j:j_end]
 
-                        # Compute block multiplication using @ operator
-                        C_block += A_block @ B_block
+                        # Compute the result using the decorated function
+                        C_block += func(A_block, B_block)
 
                     # Update the result matrix with the computed block
                     C[i:i_end, j:j_end] = C_block

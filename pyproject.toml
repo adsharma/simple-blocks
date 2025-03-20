@@ -1,0 +1,14 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "simple_blocks"
+version = "0.1.0"
+description = "A gentle intro to block/tile based programming"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.isort]
+profile = "black"

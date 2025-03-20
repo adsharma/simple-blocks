@@ -6,6 +6,7 @@ from numpy.typing import NDArray
 from simple_blocks import block
 
 
+@block(128, 128)
 def simple_matmul(A: NDArray, B: NDArray) -> NDArray:
     """
     Matrix multiplication using the @ operator.
